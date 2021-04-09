@@ -16,7 +16,7 @@ namespace FacesApi.Controllers
     [Route("[controller]")]
     public class FacesController : ControllerBase
     {
-        const string SUBSCRIPTION_KEY = "YOUR SUSCRIPTION KEY";
+        const string SUBSCRIPTION_KEY = "YOUR SUBCRIPTION KEY";
         const string ENDPOINT = "YOUR ENDPOINT";
 
 
@@ -99,14 +99,6 @@ namespace FacesApi.Controllers
             return response;
         }
 
-        [HttpPost("getFace")]
-        public async Task<PersistedFace> getFace([FromForm] string groupId, [FromForm] string personId, [FromForm] string idFace)
-        {
-            Guid personGuid = new Guid(personId);
-            Guid faceGuid = new Guid(idFace);
-            var response = await client.PersonGroupPerson.GetFaceAsync(groupId,personGuid,faceGuid);
-            return response;
-        }
 
         [HttpPost("getGroups")]
         public async Task<IList<PersonGroup>> getPersonsGroup()
@@ -123,7 +115,7 @@ namespace FacesApi.Controllers
         }
 
 
-        [HttpPost("makePresonGroup")]
+        [HttpPost("createPresonGroup")]
         public async Task makePresonGroupGetAsync([FromForm] string groupName, [FromForm] string userData)
         {
             string personGroupId = Guid.NewGuid().ToString();
